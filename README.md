@@ -99,8 +99,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(o => o.UseSqlServer(
 ```
 
 ### Migrations
-Default project: MarketApp.DAL
-Startup project: MarketApp.API
+**Default project:** MarketApp.DAL\
+**Startup project:** MarketApp.API
 ```
 Add-Migration InitialCreate -o Migrations
 Update-Database
