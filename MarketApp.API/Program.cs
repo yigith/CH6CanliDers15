@@ -1,6 +1,16 @@
+using MarketApp.Business.Interfaces;
+using MarketApp.Business.Services;
+using MarketApp.DAL.Context;
+using MarketApp.DAL.Repository;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddDbContext<ApplicationDbContext>(o => o.UseSqlServer(
+    builder.Configuration.GetConnectionString("ApplicationDbContext")));
+builder.Services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
+builder.Services.AddScoped<IProductService, ProductService>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
